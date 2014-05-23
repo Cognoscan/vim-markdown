@@ -30,7 +30,7 @@
 let s:headerExpr = '\v^#'
 
 "0 if not found
-fu! b:Markdown_GetLineNumCurHeader()
+fu! Markdown_GetLineNumCurHeader()
     retu search( s:headerExpr, 'bcnW' )
 endf
 
@@ -39,7 +39,7 @@ endf
 "- if on top level outside any headers,
 "   print a warning
 "   return ''
-fu! b:Markdown_GoCurHeaderGetHashes()
+fu! Markdown_GoCurHeaderGetHashes()
     let l:lineNum = b:Markdown_GetLineNumCurHeader()
     if l:lineNum != 0
         cal cursor( l:lineNum, 1 )
@@ -54,7 +54,7 @@ endf
 "- if on top level outside any headers,
 "   print a warning
 "   return 0
-fu! b:Markdown_GoCurHeader()
+fu! Markdown_GoCurHeader()
     let l:lineNum = b:Markdown_GetLineNumCurHeader()
     if l:lineNum != 0
         cal cursor( l:lineNum, 1 )
@@ -68,7 +68,7 @@ endf
 "goes to next header of any level
 "
 "if no there are no more headers print a warning
-fu! b:Markdown_GoNextHeader()
+fu! Markdown_GoNextHeader()
     if search( s:headerExpr, 'W' ) == 0
         "norm! G
         ec 'no next header'
@@ -78,7 +78,7 @@ endf
 "goes to previous header of any level
 "
 "if it does not exist, print a warning
-fu! b:Markdown_GoPreviousHeader()
+fu! Markdown_GoPreviousHeader()
     let l:oldPos = getpos('.')
     let l:curHeaderLineNumber = b:Markdown_GoCurHeader()
     if l:curHeaderLineNumber == 0
@@ -96,7 +96,7 @@ endf
 "if it exists, return its lines number
 "
 "otherwise, print a warning and return 0
-fu! b:Markdown_GoHeaderUp()
+fu! Markdown_GoHeaderUp()
     let l:oldPos = getpos('.')
     let l:hashes = b:Markdown_GoCurHeaderGetHashes()
     if len( l:hashes ) > 1
@@ -108,7 +108,7 @@ fu! b:Markdown_GoHeaderUp()
 endf
 
 "if no more next siblings, print error message and do nothing.
-fu! b:Markdown_GoNextSiblingHeader()
+ fu! Markdown_GoNextSiblingHeader()
     let l:oldPos = getpos('.')
     let l:hashes = b:Markdown_GoCurHeaderGetHashes()
     let l:noSibling = 0
@@ -147,7 +147,7 @@ fu! b:Markdown_GoNextSiblingHeader()
 endf
 
 "if no more next siblings, print error message and do nothing.
-fu! b:Markdown_GoPreviousSiblingHeader()
+ fu! Markdown_GoPreviousSiblingHeader()
     let l:oldPos = getpos('.')
     let l:hashes = b:Markdown_GoCurHeaderGetHashes()
     let l:noSibling = 0
