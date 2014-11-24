@@ -70,3 +70,6 @@ function! s:align()
   endif
 endfunction
 
+" Turn off tab expansion
+set noexpandtab
+
