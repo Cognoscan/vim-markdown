@@ -55,6 +55,8 @@ if !exists("g:vim_markdown_folding_disabled")
   set foldopen-=search
 endif
 
+setlocal noexpandtab
+
 " Align tables every time a bar character "|" is typed in insert mode
 inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
 
